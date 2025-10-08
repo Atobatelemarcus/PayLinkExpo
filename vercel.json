@@ -2,25 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "Exclesior/server.js",
+      "src": "index.js",
       "use": "@vercel/node"
     },
     {
-      "src": "expo-pay/vite.config.*",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "expo-pay/dist"
-      }
+      "src": "dist/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "Exclesior/server.js"
+      "dest": "index.js"
     },
     {
       "src": "/(.*)",
-      "dest": "expo-pay/dist/$1"
+      "dest": "dist/$1"
     }
   ]
 }
